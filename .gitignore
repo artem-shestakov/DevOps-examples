@@ -1,2 +1,8 @@
+# tokens + vars
+**/*.tfvars
+
 # ssh keys
 **key*
+
+# Other
+.DS_Store
