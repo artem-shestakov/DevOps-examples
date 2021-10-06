@@ -1,0 +1,4 @@
+[swarm]
+swarm01 ansible_host=192.168.101.11 swarm_role=manager
+swarm02 ansible_host=192.168.101.12 swarm_role=worker
+swarm03 ansible_host=192.168.101.13 swarm_role=worker

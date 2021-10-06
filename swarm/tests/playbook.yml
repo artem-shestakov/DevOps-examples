@@ -1,0 +1,9 @@
+---
+- name: Install Docker and init Swarm
+  hosts: swarm
+  remote_user: vagrant
+  become: true
+  roles:
+    - artem_shestakov.docker
+  vars:
+    - advertise_iface: enp0s8

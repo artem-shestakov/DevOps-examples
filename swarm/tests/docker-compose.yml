@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - $PWD/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9090:9090"
+    user: root
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
