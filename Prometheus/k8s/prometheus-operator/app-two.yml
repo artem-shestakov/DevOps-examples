@@ -35,18 +35,3 @@ spec:
   ports:
   - name: web
     port: 8080
-
-# ---
-# apiVersion: monitoring.coreos.com/v1
-# kind: ServiceMonitor
-# metadata:
-#   name: example-app-two
-#   namespace: monitoring
-#   labels:
-#     name: example-app-svcmon
-# spec:
-#   selector:
-#     matchLabels:
-#       app: example-app-two
-#   endpoints:
-#   - port: web

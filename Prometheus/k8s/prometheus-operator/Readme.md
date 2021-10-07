@@ -1,5 +1,4 @@
 # Prometheus-operator
-![Example schema](./prometheus_operator.png)
 ## Requirements
 1. Install [Prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)
 

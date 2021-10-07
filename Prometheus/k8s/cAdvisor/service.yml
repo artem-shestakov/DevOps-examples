@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: cadvisor-svc
+  name: cadvisor-service
+  namespace: monitoring
+spec:
+  selector:
+    name: cadvisor
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: http
