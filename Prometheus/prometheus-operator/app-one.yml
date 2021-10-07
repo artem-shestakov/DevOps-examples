@@ -2,26 +2,26 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: example-app
+  name: monitoring
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app
-  namespace: example-app
+  name: example-app-one
+  namespace: monitoring
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: example-app
+      app: example-app-one
   template:
     metadata:
       labels:
-        app: example-app
+        app: example-app-one
     spec:
       containers:
-      - name: example-app
+      - name: example-app-one
         image: fabxc/instrumented_app
         ports:
         - name: web
@@ -31,13 +31,13 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: example-app
-  namespace: example-app
+  name: example-app-one
+  namespace: monitoring
   labels:
     app: example-app
 spec:
   selector:
-    app: example-app
+    app: example-app-one
   ports:
   - name: web
     port: 8080
@@ -47,9 +47,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
-  namespace: example-app
+  namespace: monitoring
   labels:
-    team: frontend
+    name: example-app-svcmon
 spec:
   selector:
     matchLabels:

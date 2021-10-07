@@ -3,12 +3,17 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: prometheus
-  namespace: example-app
+  namespace: monitoring
 spec:
   serviceAccountName: prometheus
-  serviceMonitorSelector:
-    matchLabels:
-      team: frontend
+  serviceMonitorSelector: 
+    matchExpressions:
+    - key: name
+      operator: In
+      values:
+      - node-exporter-svcmon
+      - example-app-svcmon
+      - prometheus-svcmon
   resources:
     requests:
       memory: 400Mi
@@ -19,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: prometheus
-  namespace: example-app
+  namespace: monitoring
   labels:
     prometheus: example-app
 spec:
@@ -38,9 +43,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: prometheus
-  namespace: example-app
+  namespace: monitoring
   labels:
-    team: frontend
+    name: prometheus-svcmon
 spec:
   selector:
     matchLabels:
