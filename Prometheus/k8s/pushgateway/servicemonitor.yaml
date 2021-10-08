@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    name: pushgateway-svcmon
+  name: pushgateway
+  namespace: monitoring
+spec:
+  endpoints:
+  - interval: 30s
+    port: push-port
+    honorLabels: true
+  selector:
+    matchLabels:
+      svc: pushgateway
