@@ -17,6 +17,12 @@ spec:
       - cadvisor-svcmon
       - kube-state-metrics-svcmon
       - pushgateway-svcmon
+  ruleSelector:
+    matchExpressions:
+    - key: rule
+      operator: In
+      values:
+        - alerts
   resources:
     requests:
       memory: 400Mi
